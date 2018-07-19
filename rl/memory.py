@@ -142,7 +142,7 @@ class Memory(object):
             state.insert(0, self.recent_observations[current_idx])
         while len(state) < self.window_length:
             state.insert(0, zeroed_observation(state[0]))
-        return state
+        return state if len(state > 1) else state[0]
 
     def get_config(self):
         """Return configuration (window_length, ignore_episode_boundaries) for Memory
